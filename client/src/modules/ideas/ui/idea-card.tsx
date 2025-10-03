@@ -17,6 +17,7 @@ export function IdeaCard({
   updateVote,
 }: IdeaCardProps) {
   const loading = isLoading(idea.id);
+  const like = isLike(idea.id);
 
   return (
     <div
@@ -37,10 +38,10 @@ export function IdeaCard({
           role="button"
           style={{ cursor: loading ? "not-allowed" : "pointer" }}
         >
-          {isLoading(idea.id) ? (
+          {loading ? (
             <Indicator />
           ) : (
-            <>{isLike(idea.id) ? <Star color="#fcd34d" /> : <Star />}</>
+            <>{like ? <Star color="#fcd34d" /> : <Star />}</>
           )}
         </div>
         <div>{idea.vote_count}</div>
